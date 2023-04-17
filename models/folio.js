@@ -32,13 +32,16 @@ const folioScema = new mongoose.Schema({
     correoElectronico:{
         type:String,
         require:true,
-        unique:true
     },
     telefono:{
         type:Number,
         require:true
     },
     ciudad:{
+        type:String,
+        require:true,
+    },
+    direccion:{
         type:String,
         require:true,
     },

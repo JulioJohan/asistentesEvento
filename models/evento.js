@@ -13,6 +13,26 @@ const eventoSchema = mongoose.Schema({
     participantes:[{
         type: mongoose.SchemaTypes.ObjectId,
         ref:'folio'
+    }],
+    lugares:[{
+        ciudad:{
+            type:String,
+            required:true,
+        },
+        direccion:{
+            type:String,
+            require:true
+        },
+        fecha:{
+            type:Date,
+            require:true
+        },
+        hora:{
+            type: String,
+            required: true
+        }
+        // fecha  y hora  
+        //ciudad, direccion
     }]
 })
 

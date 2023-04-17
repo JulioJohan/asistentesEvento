@@ -2,6 +2,22 @@ import Folio from "../models/folio.js";
 import Evento from "../models/evento.js";
 import speakeasy from 'speakeasy';
 
+
+const buscarTodosFolios = async(req,res) => {
+
+    const folios = await Folio.find();
+
+        let areaInteres = new Set();
+        folios.forEach(folio=>{
+            areaInteres.add(folio.areaInteres)
+        })
+        console.log(areaInteres)
+
+    res.status(200).json({
+        areaInteres
+    })    
+}
+
 const guardarFolio = async(req,res) => {
     
     const folio = req.body;
@@ -33,7 +49,7 @@ const guardarFolio = async(req,res) => {
     console.log(eventoId.cupoMaximo)
     console.log( eventoId.participantes.length)
     if(eventoId.participantes.length >= eventoId.cupoMaximo){
-        return res.status(403).json({
+        return res.json({
             ok:false,
             msg:"UPPPSS ya no hay espacios para este evento"
         })
@@ -70,5 +86,6 @@ const guardarFolio = async(req,res) => {
 }
 
 export {
-    guardarFolio
+    guardarFolio,
+    buscarTodosFolios
 }
